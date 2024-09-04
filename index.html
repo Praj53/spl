@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prajakta💞Makrand</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        position: relative;
+        background-color: black;
+        transition: background-color 3s ease;
+        overflow: hidden;
+      }
+
+      .balloon {
+        position: absolute;
+        width: 50px;
+        height: 80px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: none;
+        animation: balloon-fly 10s linear infinite;
+      }
+
+      @keyframes balloon-fly {
+        0% {
+          transform: translateY(100vh);
+        }
+        100% {
+          transform: translateY(-100vh);
+        }
+      }
+
+      #bulbs {
+        display: none;
+        position: absolute;
+        top: 1px;
+        width: 100%;
+        text-align: center;
+        justify-content: space-around;
+        white-space: nowrap;
+        overflow-x: auto;
+        opacity: 0;
+        transition: opacity 2s ease;
+      }
+
+      #bulbs.show {
+        display: flex;
+        opacity: 1;
+      }
+
+      .bulb {
+        width: 80px;
+        height: 80px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: inline-block;
+        margin: 0 5px;
+      }
+
+      .button {
+        position: absolute;
+        bottom: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: opacity 1s ease;
+      }
+
+      #playMusicButton {
+        display: none;
+        background-color: #ffc107;
+      }
+
+      #decorateButton {
+        display: none;
+        background-color: #ff5722;
+      }
+
+      #nextButton {
+        display: none;
+        background-color: #ff4081;
+      }
+
+      #cutCakeButton {
+        display: none;
+        background-color: #8e44ad;
+      }
+
+      #fifthSurpriseButton {
+        display: none;
+        background-color: #3498db;
+      }
+
+      #anniversaryImage {
+        display: none;
+        position: absolute;
+        width: 400px; /* Suitable width for display */
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: slideDown 2s forwards, slideToLeft 2s 4s forwards;
+        transition: transform 1s ease, left 2s ease, top 2s ease;
+      }
+
+      @keyframes slideDown {
+        0% {
+          top: -200px;
+        }
+        100% {
+          top: 50%;
+          transform: translateX(-50%) translateY(-50%);
+        }
+      }
+
+      @keyframes slideToLeft {
+        0% {
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+        }
+        100% {
+          left: 0;
+          top: 50%;
+          transform: translate(0, -50%);
+        }
+      }
+
+      .image-sequence {
+        position: absolute;
+        top: 55%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        display: none;
+        width: 500px; /* Image width */
+        height: 500px; /* Image height */
+        animation: popUp 2s forwards, slideRight 2s 5s forwards;
+      }
+
+      .image-sequence h2 {
+        text-align: center;
+        color: #2d2c2b;
+        margin: 10px 0;
+        font-size: 24px; /* Font size for heading */
+        font-family: "Brush Script MT", cursive; /* Curly font style */
+        transition: opacity 1s ease-in-out;
+      }
+
+      @keyframes popUp {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+      @keyframes slideRight {
+        from {
+          transform: translate(-50%, -50%);
+        }
+        to {
+          transform: translate(150%, -50%);
+          opacity: 0;
+        }
+      }
+
+      #img {
+        width: 450px;
+        height: 450px;
+        border-radius: 20%;
+      }
+
+      #cakeImage {
+        display: none;
+        position: absolute;
+        width: 280px; /* Suitable width for cake display */
+        bottom: -200px; /* Start off-screen from the bottom */
+        left: 60%;
+        transform: translateX(-50%);
+        animation: cakeSlideUp 2s forwards;
+      }
+
+      @keyframes cakeSlideUp {
+        0% {
+          bottom: -200px; /* Start from below the screen */
+        }
+        100% {
+          bottom: 50%; /* Stop at the middle of the screen */
+          transform: translate(
+            -50%,
+            50%
+          ); /* Adjust to center the cake properly */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bulbs">
+      <div class="bulb" style="background-image: url('bulb.png')"></div>
+      <div class="bulb" style="background-image: url('bulb_blue.png')"></div>
+      <div class="bulb" style="background-image: url('bulb_green.png')"></div>
+      <div class="bulb" style="background-image: url('bulb_orange.png')"></div>
+      <div class="bulb" style="background-image: url('bulb_pink.png')"></div>
+      <div class="bulb" style="background-image: url('bulb_red.png')"></div>
+      <div class="bulb" style="background-image: url('bulb_yellow.png')"></div>
+    </div>
+    <div id="balloons">
+      <div
+        class="balloon"
+        style="
+          background-image: url('b1.png');
+          left: 10%;
+          animation-duration: 8s;
+        "
+      ></div>
+      <div
+        class="balloon"
+        style="
+          background-image: url('b2.png');
+          left: 30%;
+          animation-duration: 10s;
+        "
+      ></div>
+      <div
+        class="balloon"
+        style="
+          background-image: url('b3.png');
+          left: 50%;
+          animation-duration: 12s;
+        "
+      ></div>
+      <div
+        class="balloon"
+        style="
+          background-image: url('b4.png');
+          left: 70%;
+          animation-duration: 9s;
+        "
+      ></div>
+      <div
+        class="balloon"
+        style="
+          background-image: url('b5.png');
+          left: 90%;
+          animation-duration: 11s;
+        "
+      ></div>
+    </div>
+    <img id="anniversaryImage" src="anniversary.png" alt="Anniversary" />
+    <img id="cakeImage" src="cake128.png" alt="Cake Image" />
+    <button id="turnOnLights" class="button">Turn on the Lights</button>
+    <button id="playMusicButton" class="button">Let's Play some Music</button>
+    <button id="decorateButton" class="button">Let's Decorate</button>
+    <button id="nextButton" class="button">What's Next Now ?</button>
+    <button id="cutCakeButton" class="button">Wanna Cut the Cake</button>
+    <button id="fifthSurpriseButton" class="button">What's your 5th surprise ?</button>
+
+    <div id="imageSequenceContainer">
+      <div class="image-sequence" id="image1">
+        <img id="img" src="1stmeet.jpg" alt="First Image" />
+        <h2>All Starts Here✨</h2>
+      </div>
+      <div class="image-sequence" id="image2">
+        <img id="img" src="1st.jpg" alt="Second Image" />
+        <h2>Here We Turn 1 Year With Taking Many Efforts 😅</h2>
+      </div>
+      <div class="image-sequence" id="image3">
+        <img id="img" src="2nd.jpg" alt="Third Image" />
+        <h2>Then Its Our 2nd togetherness 💍</h2>
+      </div>
+      <div class="image-sequence" id="image4">
+        <img id="img" src="3rd.jpg" alt="Fourth Image" />
+        <h2>In 3rd Finally Got into Happy Relationship🥰</h2>
+      </div>
+      <div class="image-sequence" id="image5">
+        <img id="img" src="4th.jpg" alt="Fifth Image" />
+        <h2>It's Our 4th Most Beautiful Anniversary 😘</h2>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const balloons = document.querySelectorAll(".balloon");
+        const turnOnLightsButton = document.getElementById("turnOnLights");
+        const playMusicButton = document.getElementById("playMusicButton");
+        const decorateButton = document.getElementById("decorateButton");
+        const nextButton = document.getElementById("nextButton");
+        const cutCakeButton = document.getElementById("cutCakeButton");
+        const fifthSurpriseButton = document.getElementById("fifthSurpriseButton");
+        const bulbs = document.getElementById("bulbs");
+        const anniversaryImage = document.getElementById("anniversaryImage");
+        const cakeImage = document.getElementById("cakeImage");
+        const images = document.querySelectorAll(".image-sequence");
+        const audio = new Audio("dil.mp3"); // Create an audio object
+
+        audio.loop = true; // Enable looping
+
+        // Show bulbs and transition background color on "Turn on the Lights" button click
+        turnOnLightsButton.addEventListener("click", () => {
+          bulbs.classList.add("show");
+          turnOnLightsButton.style.display = "none"; // Hide button after clicking
+
+          // Change background color to peach
+          document.body.style.backgroundColor = "#ffcccb"; // Peach color#ffcccb
+
+          // Show "Let's Play Music" button after bulbs appear
+          setTimeout(() => {
+            playMusicButton.style.display = "block";
+          }, 3000); // Timing to match background transition duration
+        });
+
+        // Play music on "Let's Play Music" button click
+        playMusicButton.addEventListener("click", () => {
+          audio.play(); // Start playing music
+          playMusicButton.style.display = "none"; // Hide the button after clicking
+
+          // Show "Let's Decorate" button after some time
+          setTimeout(() => {
+            decorateButton.style.display = "block";
+          }, 3000); // Timing before showing the next button
+        });
+
+        // Show balloons on "Let's Decorate" button click
+        decorateButton.addEventListener("click", () => {
+          decorateButton.style.display = "none"; // Hide the button after clicking
+
+          // Start the balloon animation
+          balloons.forEach((balloon) => {
+            balloon.style.display = "block";
+          });
+
+          // Position balloons randomly
+          balloons.forEach((balloon) => {
+            balloon.style.top = `${Math.random() * 100}vh`;
+          });
+
+          // Show "What's Next Now" button
+          setTimeout(() => {
+            nextButton.style.display = "block";
+          }, 3000); // Timing to match animation duration
+        });
+
+        // Show anniversary image and image sequence on "What's Next Now" button click
+        nextButton.addEventListener("click", () => {
+          nextButton.style.display = "none"; // Hide the button after clicking
+          anniversaryImage.style.display = "block"; // Show the image at the center initially
+
+          // Sequence to move anniversary image to the left
+          setTimeout(() => {
+            anniversaryImage.style.animation = "slideToLeft 2s forwards";
+          }, 3000); // Delay before sliding to the left
+
+          // Show image sequence one by one
+          let delay = 4000; // Delay before showing the first image after anniversary moves left
+          images.forEach((image, index) => {
+            setTimeout(() => {
+              image.style.display = "block"; // Show image with pop-up effect
+            }, delay);
+            delay += 5000; // Keep the image for 5 seconds
+            setTimeout(() => {
+              image.style.display = "none"; // Hide image after 5 seconds
+            }, delay + 4000); // 5 seconds display + 3 seconds gap
+          });
+
+          // Show "Let's Cut the Cake" button after the last image hides
+          setTimeout(() => {
+            cutCakeButton.style.display = "block";
+          }, delay + 3000); // Delay to ensure the last image is fully displayed before showing the button
+        });
+
+        // Show cake image on "Let's Cut the Cake" button click
+        cutCakeButton.addEventListener("click", () => {
+          cutCakeButton.style.display = "none"; // Hide the button after clicking
+          cakeImage.style.display = "block"; // Show the cake image with animation
+
+          // Show "What's your 5th surprise" button after cake image is displayed for 30 seconds
+          setTimeout(() => {
+            fifthSurpriseButton.style.display = "block";
+          }, 30000); // 30 seconds delay
+        });
+
+        // Handle "What's your 5th surprise" button click
+        fifthSurpriseButton.addEventListener("click", () => {
+          alert("Look At Your Girlfriend"); // Replace with actual surprise functionality
+        });
+      });
+    </script>
+  </body>
+</html>
